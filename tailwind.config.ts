@@ -19,6 +19,7 @@ const config = {
     },
     extend: {
       colors: {
+        'dark-blue': '#002D72',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -74,7 +75,17 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+    function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
+      addUtilities({
+        '.text-gradient': {
+          background: 'linear-gradient(to right, #2d3748, #e63946, #f1a659, #f7c54b, #00a8a0, #6a1b9a, #4f46e5)', // Customize gradient colors
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+      });
+    },
+  ],
 } satisfies Config
 
 export default config
