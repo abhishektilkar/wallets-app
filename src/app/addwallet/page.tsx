@@ -87,7 +87,7 @@ const WalletPage: React.FC = () => {
                 {selectedOption === '' && (
                     <div className="mx-auto text-center">
                         <p className="text-gradient mt-4">
-                            Manage your wallet securely and efficiently. Creating a new wallet will generate a mnemonic phrase that you'll need to keep safe. If you already have a mnemonic phrase, you can add your existing wallet using it.
+                            Manage your wallet securely and efficiently. Creating a new wallet will generate a mnemonic phrase that you&apos;ll need to keep safe. If you already have a mnemonic phrase, you can add your existing wallet using it.
                         </p>
                         <div className="flex justify-center">
                             <svg
