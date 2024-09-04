@@ -10,6 +10,7 @@ const WalletPage: React.FC = () => {
     const [mnemonic, setMnemonic] = useState<string[]>(Array(12).fill(''));
     const [walletName, setWalletName] = useState('');
     const [error, setError] = useState('');
+    const [error1, setError1] = useState('');
     const [showToast, setShowToast] = useState(false);
 
     const generateMnemonic = () => {
@@ -25,11 +26,15 @@ const WalletPage: React.FC = () => {
     };
 
     const handleAddExistingWallet = () => {
-        if (mnemonic.some(word => !word) || mnemonic.length !== 12) {
-            setError('Please enter a valid 12-word mnemonic phrase.');
+        if (mnemonic.some(word => !word) || mnemonic.length !== 12 || !walletName) {
+            if (!walletName) {
+                setError1('Please enter a valid wallet Name');
+            }
+            if (mnemonic.some(word => !word) || mnemonic.length !== 12) {
+                setError('Please enter a valid 12-word mnemonic phrase.');
+            }
             return;
         }
-
         // Add wallet logic here
         setError('');
         alert('Wallet added successfully!');
@@ -37,8 +42,9 @@ const WalletPage: React.FC = () => {
 
     const handleInputChange = (index: number, value: string) => {
         const updatedMnemonic = [...mnemonic];
-        updatedMnemonic[index] = value;
+        updatedMnemonic[index] = value.trim();
         setMnemonic(updatedMnemonic);
+        setError('');
     };
 
     const copyMnemonicToClipboard = () => {
@@ -137,11 +143,12 @@ const WalletPage: React.FC = () => {
                             type="text"
                             placeholder="Enter wallet name"
                             value={walletName}
-                            onChange={(e) => setWalletName(e.target.value)}
+                            onChange={(e) => {setWalletName(e.target.value); setError1('')}}
                             className="w-full bg-white text-black border border-gray-300 rounded-lg p-3"
                         />
                     </div>
                 )}
+                {error1 && <p className="text-red-500 text-sm mt-2 mb-2">{error1}</p>}
 
                 {selectedOption === 'create' && (
                     <>
