@@ -3,7 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import * as bip39 from 'bip39';
-import Toast from '../components/Toast';
+import Toast from '../../components/Toast';
+import { useWalletContext } from '@/app/components/WalletContext';
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const WalletPage: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState<'create' | 'add' | ''>('');
@@ -13,11 +16,15 @@ const WalletPage: React.FC = () => {
     const [error1, setError1] = useState('');
     const [showToast, setShowToast] = useState(false);
 
+    const router = useRouter();
+    const { setMnemonic: setContextMnemonic, setWalletName: setContextWalletName } = useWalletContext();
+
     const generateMnemonic = () => {
         setSelectedOption('create');
         const mnemonic = bip39.generateMnemonic(128);
         const words = mnemonic.split(' ');
         setMnemonic(words);
+        // setContextMnemonic(words);
     };
 
     const addMnemonic = () => {
@@ -26,7 +33,9 @@ const WalletPage: React.FC = () => {
     };
 
     const handleAddExistingWallet = () => {
+        // console.log("1")
         if (mnemonic.some(word => !word) || mnemonic.length !== 12 || !walletName) {
+            // console.log("i")
             if (!walletName) {
                 setError1('Please enter a valid wallet Name');
             }
@@ -35,9 +44,14 @@ const WalletPage: React.FC = () => {
             }
             return;
         }
+        // console.log("2")
         // Add wallet logic here
         setError('');
-        alert('Wallet added successfully!');
+        setContextWalletName(walletName);
+        setContextMnemonic(mnemonic);
+        // console.log("3")
+        router.push('/mywallet');
+        // alert('Wallet added successfully!');
     };
 
     const handleInputChange = (index: number, value: string) => {
