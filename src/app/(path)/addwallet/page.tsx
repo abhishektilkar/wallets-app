@@ -82,14 +82,15 @@ const WalletPage: React.FC = () => {
     };
 
     return (
-        <div className="bg-white text-black min-h-screen py-10 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-lg mx-auto bg-gray-100 p-6 rounded-lg shadow-lg">
+        // <div className='bg-black h-screen'>
+        <div className="bg-black text-black min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-lg mx-auto bg-gradient-to-b from-blue-600 to-purple-700 p-6 rounded-lg shadow-lg">
                 <h1 className="text-2xl font-semibold mb-6 text-center">Manage Your Wallet</h1>
 
                 <div className="flex gap-2 sm:gap-4 mb-4">
                     <Button
                         onClick={generateMnemonic}
-                        className={`w-full py-2 rounded-lg font-semibold transition-colors duration-300 ${selectedOption === 'create' ? 'bg-black text-white hover:bg-gray-800' : 'bg-gray-300 text-black hover:bg-gray-400'}`}
+                        className={`w-full py-2 rounded-lg font-semibold transition-colors duration-300 ${selectedOption === 'create' ? 'bg-black text-white hover:bg-gray-800' : 'bg-yellow-300 text-black hover:bg-yellow-500 hover:text-gray-200'}`}
                     >
                         <span className="block sm:hidden">Create</span>
                         <span className="hidden sm:block">Create New Wallet</span>
@@ -97,7 +98,7 @@ const WalletPage: React.FC = () => {
 
                     <Button
                         onClick={addMnemonic}
-                        className={`w-full py-2 rounded-lg font-semibold transition-colors duration-300 ${selectedOption === 'add' ? 'bg-black text-white hover:bg-gray-800' : 'bg-gray-300 text-black hover:bg-gray-400'}`}
+                        className={`w-full py-2 rounded-lg font-semibold transition-colors duration-300 ${selectedOption === 'add' ? 'bg-black text-white hover:bg-gray-800' : 'bg-green-300 text-black hover:bg-green-500 hover:text-gray-200'}`}
                     >
                         <span className="block sm:hidden">Add</span>
                         <span className="hidden sm:block">Add Existing Wallet</span>
@@ -180,7 +181,7 @@ const WalletPage: React.FC = () => {
                         </div>
                         <Button
                             onClick={handleAddExistingWallet}
-                            className="w-full py-2 bg-black text-white rounded-lg font-semibold"
+                            className="w-full py-2 bg-black text-green-400 rounded-lg font-semibold"
                         >
                             Generate New Wallet
                         </Button>
@@ -202,7 +203,7 @@ const WalletPage: React.FC = () => {
                         </div>
                         <Button
                             onClick={handleAddExistingWallet}
-                            className="w-full py-2 bg-black text-white rounded-lg font-semibold"
+                            className="w-full py-2 bg-black text-slate-500 rounded-lg font-semibold"
                         >
                             Add Wallet
                         </Button>
@@ -219,6 +220,7 @@ const WalletPage: React.FC = () => {
                 )}
             </div>
         </div>
+        // </div>
     );
 };
 

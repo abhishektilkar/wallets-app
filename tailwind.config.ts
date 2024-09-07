@@ -79,7 +79,7 @@ const config = {
     function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
       addUtilities({
         '.text-gradient': {
-          background: 'linear-gradient(to right, #2d3748, #e63946, #f1a659, #f7c54b, #00a8a0, #6a1b9a, #4f46e5)', // Customize gradient colors
+          background: 'linear-gradient(to right, #FF6F61, #FFD95A, #4ECDC4, #008000)', // Customize gradient colors
           '-webkit-background-clip': 'text',
           '-webkit-text-fill-color': 'transparent',
         },
