@@ -17,19 +17,19 @@ function generateSolanaWallet(seed: Buffer, n: number): string {
     return Keypair.fromSecretKey(secret).publicKey.toBase58();
 }
 
-function generateEthereumWallet(seed: Buffer, n:number): string {
-    const path = `m/44'/${PathMap['Ethereum']}'/${n}'/0'`;
-    // const hdNode = HDNodeWallet.fromSeed(seed);
-    return '';
-}
+// function generateEthereumWallet(seed: Buffer, n:number): string {
+//     const path = `m/44'/${PathMap['Ethereum']}'/${n}'/0'`;
+//     // const hdNode = HDNodeWallet.fromSeed(seed);
+//     return '';
+// }
 
 function generateWallets(mnemonic: Array<String>, n: number) {
     const mnemonicString = mnemonic.join(' ')
     const isValidMnemonic = validateMnemonic(mnemonicString);
-    if (!isValidMnemonic) throw new Error('Invalid mnemonic Error');
+    if (!isValidMnemonic) return { solanaAddress: '', ethereumAddress: '' }; //throw new Error('Invalid mnemonic Error');
     const seed = mnemonicToSeedSync(mnemonicString);
     const solanaAddress = generateSolanaWallet(seed, n);
-    const ethereumAddress =  generateEthereumWallet(seed, n);
+    const ethereumAddress =  ''; // generateEthereumWallet(seed, n);
     return { solanaAddress, ethereumAddress };
 }
 
