@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -75,11 +75,24 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),
+  plugins: [
+    require("tailwindcss-animate"),
     function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
       addUtilities({
+        // Existing text gradient
         '.text-gradient': {
-          background: 'linear-gradient(to right, #FF6F61, #FFD95A, #4ECDC4, #008000)', // Customize gradient colors
+          background: 'linear-gradient(to right, #FF6F61, #FFD95A, #4ECDC4, #008000)', 
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+        // New text gradient from purple to blue
+        '.text-gradient-purple-blue': {
+          background: 'linear-gradient(to bottom, #3A0066, #5A00A1, #0072F5)', // Purple to blue gradient
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+        '.text-gradient-green-blue1': {
+          background: 'linear-gradient(to right, #34d399, #3B9A6C, #7F1DFF)', // Purple to blue gradient
           '-webkit-background-clip': 'text',
           '-webkit-text-fill-color': 'transparent',
         },
