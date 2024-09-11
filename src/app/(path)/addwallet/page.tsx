@@ -84,7 +84,7 @@ const WalletPage: React.FC = () => {
     return (
         // <div className='bg-black h-screen'>
         <div className="bg-black text-black min-h-screen py-8 px-4 sm:px-6 lg:px-4">
-            <div className="max-w-sm mt-1 mx-auto bg-gradient-to-br from-blue-600 to-purple-700 p-6 rounded-lg shadow-lg transition-transform transform-gpu hover:shadow-2xl hover:scale-105 active:scale-95">
+            <div className="max-w-sm mt-1 mx-auto bg-gradient-to-br from-blue-600 to-purple-700 p-6 rounded-lg shadow-lg">
                 <h1 className="text-2xl font-semibold mb-6 text-center">Manage Your Wallet</h1>
 
                 <div className="flex gap-2 sm:gap-4 mb-4">
@@ -107,7 +107,7 @@ const WalletPage: React.FC = () => {
 
                 {selectedOption === '' && (
                     <div className="mx-auto text-center">
-                        <button className="text-gradient mt-4 hover:text-gray-50">
+                        <button className="text-gradient-hover mt-4 hover:text-gray-500">
                             Manage your wallet securely and efficiently. Creating a new wallet will generate a mnemonic phrase that you&apos;ll need to keep safe. If you already have a mnemonic phrase, you can add your existing wallet using it.
                         </button>
                         <div className="flex justify-center">

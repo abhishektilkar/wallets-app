@@ -16,9 +16,11 @@ const HomePage = () => {
               A simple, secure, and convenient way to keep track of your finances.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-              <Button className="px-6 py-3 text-sm md:text-base bg-green-400 text-black hover:bg-green-500">
-                Get Started
-              </Button>
+              <Link href='/addwallet'>
+                <Button className="px-6 py-3 text-sm md:text-base bg-green-400 text-black hover:bg-green-500">
+                  Get Started
+                </Button>
+              </Link>
               <Button className="px-6 py-3 text-sm md:text-base border border-green-400 text-green-400 hover:bg-green-500 hover:text-black">
                 Learn More
               </Button>
